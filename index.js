@@ -33,6 +33,7 @@ function showAll() {
   fetch("data.json")
     .then((response) => response.json())
     .then((data) => {
+      removeAll();
       const dataList = document.getElementById("data-list");
       data.forEach((item) => {
         const listItem = document.createElement("li");
@@ -47,6 +48,7 @@ function showActive() {
   fetch("data.json")
     .then((response) => response.json())
     .then((data) => {
+      removeAll();
       const dataList = document.getElementById("data-list");
       data.forEach((item) => {
         if (item.isActive) {
@@ -63,6 +65,7 @@ function showInactive() {
   fetch("data.json")
     .then((response) => response.json())
     .then((data) => {
+      removeAll();
       const dataList = document.getElementById("data-list");
       data.forEach((item) => {
         if (!item.isActive) {
