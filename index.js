@@ -14,15 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document
   .getElementsByClassName("sort-buttons")[0]
-  .addEventListener("click", showAll);
+  .children[0].addEventListener("click", showAll);
 
 document
-  .getElementsByClassName("sort-buttons")[1]
-  .addEventListener("click", showActive);
+  .getElementsByClassName("sort-buttons")[0]
+  .children[1].addEventListener("click", showActive);
 
 document
-  .getElementsByClassName("sort-buttons")[2]
-  .addEventListener("click", showInactive);
+  .getElementsByClassName("sort-buttons")[0]
+  .children[2].addEventListener("click", showInactive);
 
 function removeAll() {
   const dataList = document.getElementById("data-list");
