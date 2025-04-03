@@ -37,12 +37,37 @@
           margin-left: auto;
         }
       }
+      #dark-mode-icon {
+        display: block;
+      }
+      #light-mode-icon {
+        display: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        #dark-mode-icon {
+          display: none;
+        }
+        #light-mode-icon {
+          display: block;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
       <img src="assets/images/logo.svg" alt="logo" />
-      <button id="color-switch"></button>
+      <button id="color-switch">
+        <img
+          id="dark-mode-icon"
+          src="assets/images/icon-moon.svg"
+          alt="dark-mode"
+        />
+        <img
+          id="light-mode-icon"
+          src="assets/images/icon-sun.svg"
+          alt="light-mode"
+        />
+      </button>
     </header>
 
     <div id="data-list"></div>
