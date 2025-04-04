@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
     const listItem = document.createElement("li");
+    listItem.classList.add("data-item");
     listItem.innerHTML = getItemHTML(item);
     dataList.appendChild(listItem);
   });
@@ -127,6 +128,7 @@ function showAll() {
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
     const listItem = document.createElement("li");
+    listItem.classList.add("data-item");
     listItem.innerHTML = getItemHTML(item);
     dataList.appendChild(listItem);
   });
@@ -151,6 +153,7 @@ function showActive() {
   data.forEach((item) => {
     if (item.isActive) {
       const listItem = document.createElement("li");
+      listItem.classList.add("data-item");
       listItem.innerHTML = getItemHTML(item);
       dataList.appendChild(listItem);
     }
@@ -176,6 +179,7 @@ function showInactive() {
   data.forEach((item) => {
     if (!item.isActive) {
       const listItem = document.createElement("li");
+      listItem.classList.add("data-item");
       listItem.innerHTML = getItemHTML(item);
       dataList.appendChild(listItem);
     }
@@ -183,7 +187,7 @@ function showInactive() {
 }
 
 function getItemHTML(item) {
-  return `<div class="data-item">
+  return `<div>
     <div class="item-content">
       <img src=${item.logo} alt=${item.name}></img>
       <div class="item-details">

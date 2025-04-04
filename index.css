@@ -1,3 +1,9 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: "CustomFont";
   src: url("assets/fonts/static/NotoSans-Regular.ttf") format("truetype");
@@ -121,10 +127,15 @@ header {
 }
 @media (min-width: 1440px) {
   body {
-    max-width: 1170px;
+    max-width: 1440px;
   }
   #data-list {
-    display: grid;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .data-item {
+    position: relative;
+    width: 32.33%;
   }
   #toolbar {
     flex-direction: row;
