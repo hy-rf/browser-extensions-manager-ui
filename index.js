@@ -111,6 +111,18 @@ function removeAll() {
 
 function showAll() {
   removeAll();
+  document
+    .getElementsByClassName("sort-button")[0]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[1]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[2]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[0]
+    .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
@@ -122,6 +134,18 @@ function showAll() {
 
 function showActive() {
   removeAll();
+  document
+    .getElementsByClassName("sort-button")[0]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[1]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[2]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[1]
+    .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
@@ -135,6 +159,18 @@ function showActive() {
 
 function showInactive() {
   removeAll();
+  document
+    .getElementsByClassName("sort-button")[0]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[1]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[2]
+    .classList.remove("activated-button");
+  document
+    .getElementsByClassName("sort-button")[2]
+    .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
