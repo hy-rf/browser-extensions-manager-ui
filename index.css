@@ -49,11 +49,30 @@ header {
 }
 .item-content {
   display: flex;
+  img {
+    align-self: flex-start;
+  }
 }
 .item-details {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+}
+.item-toolbar {
+  display: flex;
+  margin-top: 0.5rem;
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background-color: rgb(252, 253, 255);
+    border: 1px solid grey;
+  }
 }
 #toolbar {
   display: flex;
