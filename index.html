@@ -25,6 +25,7 @@
       }
       body {
         background-color: rgb(236, 243, 252);
+        margin: auto;
       }
       header {
         background-color: rgb(252, 253, 255);
@@ -37,6 +38,39 @@
           margin-left: auto;
         }
       }
+      #data-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 1rem;
+        padding: 0 1rem;
+        list-style: none;
+      }
+      .data-item {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(252, 253, 255);
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+      .item-content {
+        display: flex;
+      }
+      .item-details {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+      }
+      #toolbar {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
+      #right-toolbar {
+        display: flex;
+        justify-content: center;
+      }
+
       #dark-mode-icon {
         display: block;
       }
@@ -49,6 +83,20 @@
         }
         #light-mode-icon {
           display: block;
+        }
+      }
+      @media (min-width: 1440px) {
+        body {
+          max-width: 1170px;
+        }
+        #data-list {
+          display: grid;
+        }
+        #toolbar {
+          flex-direction: row;
+        }
+        #right-toolbar {
+          margin-left: auto;
         }
       }
     </style>
@@ -69,16 +117,16 @@
         />
       </button>
     </header>
-    <div>
-      <div></div>
-      <div class="sort-buttons">
-        <button>All</button>
-        <button>Active</button>
-        <button>Inactive</button>
+    <div id="toolbar">
+      <p><h1>Extensions List</h1></p>
+      <div id="right-toolbar">
+        <button class="sort-button">All</button>
+        <button class="sort-button">Active</button>
+        <button class="sort-button">Inactive</button>
       </div>
     </div>
 
-    <div id="data-list"></div>
+    <ul id="data-list"></ul>
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.

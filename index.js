@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<p>Name: ${item.name}, Age: ${item.description}</p><img src=${item.logo} alt=${item.name}></img>`;
+    listItem.innerHTML = getItemHTML(item);
     dataList.appendChild(listItem);
   });
 });
@@ -93,16 +93,16 @@ function getData() {
 }
 
 document
-  .getElementsByClassName("sort-buttons")[0]
-  .children[0].addEventListener("click", showAll);
+  .getElementsByClassName("sort-button")[0]
+  .addEventListener("click", showAll);
 
 document
-  .getElementsByClassName("sort-buttons")[0]
-  .children[1].addEventListener("click", showActive);
+  .getElementsByClassName("sort-button")[1]
+  .addEventListener("click", showActive);
 
 document
-  .getElementsByClassName("sort-buttons")[0]
-  .children[2].addEventListener("click", showInactive);
+  .getElementsByClassName("sort-button")[2]
+  .addEventListener("click", showInactive);
 
 function removeAll() {
   const dataList = document.getElementById("data-list");
@@ -115,7 +115,7 @@ function showAll() {
   const dataList = document.getElementById("data-list");
   data.forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<p>Name: ${item.name}, Age: ${item.description}</p><img src=${item.logo} alt=${item.name}></img>`;
+    listItem.innerHTML = getItemHTML(item);
     dataList.appendChild(listItem);
   });
 }
@@ -127,7 +127,7 @@ function showActive() {
   data.forEach((item) => {
     if (item.isActive) {
       const listItem = document.createElement("li");
-      listItem.innerHTML = `<p>Name: ${item.name}, Age: ${item.description}</p><img src=${item.logo} alt=${item.name}></img>`;
+      listItem.innerHTML = getItemHTML(item);
       dataList.appendChild(listItem);
     }
   });
@@ -140,8 +140,25 @@ function showInactive() {
   data.forEach((item) => {
     if (!item.isActive) {
       const listItem = document.createElement("li");
-      listItem.innerHTML = `<p>Name: ${item.name}, Age: ${item.description}</p><img src=${item.logo} alt=${item.name}></img>`;
+      listItem.innerHTML = getItemHTML(item);
       dataList.appendChild(listItem);
     }
   });
+}
+
+function getItemHTML(item) {
+  return `<div class="data-item">
+    <div class="item-content">
+      <img src=${item.logo} alt=${item.name}></img>
+      <div class="item-details">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+      </div>
+
+    </div>
+    <div class="item-toolbar">
+      <button>Remove</button>
+
+    </div>
+    </div>`;
 }
