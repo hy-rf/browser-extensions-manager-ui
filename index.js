@@ -219,7 +219,10 @@ function getItemHTML(item, index) {
     </div>
     <div class="item-toolbar">
       <button id=${index} class="remove-button">Remove</button>
-
+      <label class="switch">
+        <input type="checkbox" ${item.isActive && "checked"}>
+        <span class="slider round"></span>
+      </label>
     </div>
     </div>`;
 }
