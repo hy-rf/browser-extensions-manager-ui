@@ -79,15 +79,10 @@ let data = [
   },
 ];
 
+let sortState = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
-  const data = getData();
-  const dataList = document.getElementById("data-list");
-  data.forEach((item) => {
-    const listItem = document.createElement("li");
-    listItem.classList.add("data-item");
-    listItem.innerHTML = getItemHTML(item);
-    dataList.appendChild(listItem);
-  });
+  showAll();
 });
 
 function getData() {
@@ -108,7 +103,19 @@ document
 
 document.getElementById("data-list").addEventListener("click", (e) => {
   if (e.target.classList.contains("remove-button")) {
-    alert("item removed");
+    const index = parseInt(e.target.id, 10);
+    data.splice(index, 1);
+    switch (sortState) {
+      case 0:
+        showAll();
+        break;
+      case 1:
+        showActive();
+        break;
+      case 2:
+        showInactive();
+        break;
+    }
   }
 });
 
@@ -133,12 +140,13 @@ function showAll() {
     .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     const listItem = document.createElement("li");
     listItem.classList.add("data-item");
-    listItem.innerHTML = getItemHTML(item);
+    listItem.innerHTML = getItemHTML(item, index);
     dataList.appendChild(listItem);
   });
+  sortState = 0;
 }
 
 function showActive() {
@@ -157,14 +165,15 @@ function showActive() {
     .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     if (item.isActive) {
       const listItem = document.createElement("li");
       listItem.classList.add("data-item");
-      listItem.innerHTML = getItemHTML(item);
+      listItem.innerHTML = getItemHTML(item, index);
       dataList.appendChild(listItem);
     }
   });
+  sortState = 1;
 }
 
 function showInactive() {
@@ -183,21 +192,22 @@ function showInactive() {
     .classList.add("activated-button");
   const data = getData();
   const dataList = document.getElementById("data-list");
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     if (!item.isActive) {
       const listItem = document.createElement("li");
       listItem.classList.add("data-item");
-      listItem.innerHTML = getItemHTML(item);
+      listItem.innerHTML = getItemHTML(item, index);
       dataList.appendChild(listItem);
     }
   });
+  sortState = 2;
 }
 
 function deleteItem(index) {
   data = data.splice(index, 1);
 }
 
-function getItemHTML(item) {
+function getItemHTML(item, index) {
   return `<div>
     <div class="item-content">
       <img src=${item.logo} alt=${item.name}></img>
@@ -208,7 +218,7 @@ function getItemHTML(item) {
 
     </div>
     <div class="item-toolbar">
-      <button class="remove-button">Remove</button>
+      <button id=${index} class="remove-button">Remove</button>
 
     </div>
     </div>`;
