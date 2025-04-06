@@ -104,7 +104,7 @@ document
 document.getElementById("data-list").addEventListener("click", (e) => {
   if (e.target.classList.contains("remove-button")) {
     const index = parseInt(e.target.id, 10);
-    data.splice(index, 1);
+    deleteItem(index);
     switch (sortState) {
       case 0:
         showAll();
@@ -116,6 +116,23 @@ document.getElementById("data-list").addEventListener("click", (e) => {
         showInactive();
         break;
     }
+    return;
+  }
+  if (e.target.id.startsWith("state")) {
+    const id = parseInt(e.target.id.split(",")[1]);
+    updateActiveState(id);
+    switch (sortState) {
+      case 0:
+        showAll();
+        break;
+      case 1:
+        showActive();
+        break;
+      case 2:
+        showInactive();
+        break;
+    }
+    return;
   }
 });
 
@@ -203,8 +220,12 @@ function showInactive() {
   sortState = 2;
 }
 
+function updateActiveState(index) {
+  data[index].isActive = !data[index].isActive;
+}
+
 function deleteItem(index) {
-  data = data.splice(index, 1);
+  data.splice(index, 1);
 }
 
 function getItemHTML(item, index) {
@@ -220,7 +241,7 @@ function getItemHTML(item, index) {
     <div class="item-toolbar">
       <button id=${index} class="remove-button">Remove</button>
       <label class="switch">
-        <input type="checkbox" ${item.isActive && "checked"}>
+        <input id="state,${index}" type="checkbox" ${item.isActive && "checked"}>
         <span class="slider round"></span>
       </label>
     </div>
