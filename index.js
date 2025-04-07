@@ -266,26 +266,28 @@ function toggleColorScheme() {
   }
 
   switch (currentTheme) {
-    case "dark":
-      // Switch to light theme
-      root.style.setProperty("--background-color", "rgb(238, 250, 250)");
-      root.style.setProperty("--text-color", "rgb(2, 13, 44)");
-      root.style.setProperty("--item-background-color", "rgb(252, 253, 255)");
-      root.style.setProperty("--item-border-color", "rgb(215, 223, 235)");
-      root.style.setProperty("--is-light-showed", "block");
-      root.style.setProperty("--is-dark-showed", "none");
-      break;
-
     case "light":
-      // Switch to dark theme
       root.style.setProperty("--background-color", "rgb(9, 18, 56)");
+      root.style.setProperty("--color-switch", "rgb(45, 54, 75)");
       root.style.setProperty("--text-color", "rgb(251, 254, 255)");
       root.style.setProperty("--item-background-color", "rgb(32, 37, 54)");
       root.style.setProperty("--item-border-color", "rgb(68, 74, 91)");
+      root.style.setProperty("--button-hover-color", "rgb(83, 87, 104)");
+
+      root.style.setProperty("--is-light-showed", "block");
+      root.style.setProperty("--is-dark-showed", "none");
+      break;
+    case "dark":
+      root.style.setProperty("--background-color", "rgb(238, 250, 250)");
+      root.style.setProperty("--color-switch", "rgb(238, 238, 239)");
+      root.style.setProperty("--text-color", "rgb(2, 13, 44)");
+      root.style.setProperty("--item-background-color", "rgb(252, 253, 255)");
+      root.style.setProperty("--item-border-color", "rgb(215, 223, 235)");
+      root.style.setProperty("--button-hover-color", "rgb(246, 250, 252)");
+
       root.style.setProperty("--is-light-showed", "none");
       root.style.setProperty("--is-dark-showed", "block");
       break;
-
     default:
       console.warn("Unknown theme:", currentTheme);
   }
