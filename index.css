@@ -6,6 +6,26 @@
   padding: 0;
 }
 
+:root {
+  --background-color: rgb(236, 243, 252);
+  --text-color: #000000;
+  --data-item-background-color: #f0f0f0;
+  --data-item-text-color: #000000;
+  --is-light-showed: block;
+  --is-dark-showed: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: rgb(9, 18, 56);
+    --text-color: #ffffff;
+    --data-item-background-color: #333333;
+    --data-item-text-color: #ffffff;
+    --is-light-showed: none;
+    --is-dark-showed: block !important;
+  }
+}
+
 @font-face {
   font-family: "CustomFont";
   src: url("assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf")
@@ -16,7 +36,7 @@
 
 body {
   font-family: "CustomFont";
-  background-color: rgb(236, 243, 252);
+  background-color: var(--background-color);
   margin: auto;
 }
 
@@ -132,11 +152,11 @@ header {
 }
 
 #dark-mode-icon {
-  display: block;
+  display: var(--is-dark-showed);
   margin: auto;
 }
 #light-mode-icon {
-  display: none;
+  display: var(--is-light-showed);
   margin: auto;
 }
 
@@ -203,16 +223,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media (prefers-color-scheme: dark) {
-  #dark-mode-icon {
-    display: none;
-    margin: auto;
-  }
-  #light-mode-icon {
-    display: block;
-    margin: auto;
-  }
-}
 @media (min-width: 1440px) {
   body {
     max-width: 1440px;

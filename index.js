@@ -90,6 +90,10 @@ function getData() {
 }
 
 document
+  .getElementById("color-switch")
+  .addEventListener("click", toggleColorScheme);
+
+document
   .getElementsByClassName("sort-button")[0]
   .addEventListener("click", showAll);
 
@@ -246,4 +250,41 @@ function getItemHTML(item, index) {
       </label>
     </div>
     </div>`;
+}
+
+function toggleColorScheme() {
+  const root = document.documentElement;
+  const backgroundColor = getComputedStyle(root)
+    .getPropertyValue("--background-color")
+    .trim();
+
+  let currentTheme = "light";
+
+  // Determine current theme based on background color
+  if (backgroundColor === "rgb(9, 18, 56)") {
+    currentTheme = "dark";
+  }
+
+  switch (currentTheme) {
+    case "dark":
+      root.style.setProperty("--background-color", "rgb(236, 243, 252)");
+      root.style.setProperty("--text-color", "#000000");
+      root.style.setProperty("--data-item-background-color", "#f0f0f0");
+      root.style.setProperty("--data-item-text-color", "#000000");
+      root.style.setProperty("--is-light-showed", "block");
+      root.style.setProperty("--is-dark-showed", "none");
+      break;
+
+    case "light":
+      root.style.setProperty("--background-color", "rgb(9, 18, 56)");
+      root.style.setProperty("--text-color", "#ffffff");
+      root.style.setProperty("--data-item-background-color", "#333333");
+      root.style.setProperty("--data-item-text-color", "#ffffff");
+      root.style.setProperty("--is-light-showed", "none");
+      root.style.setProperty("--is-dark-showed", "block");
+      break;
+
+    default:
+      console.warn("Unknown theme:", currentTheme);
+  }
 }
