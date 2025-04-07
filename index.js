@@ -260,26 +260,28 @@ function toggleColorScheme() {
 
   let currentTheme = "light";
 
-  // Determine current theme based on background color
+  // Detect current theme based on the background color
   if (backgroundColor === "rgb(9, 18, 56)") {
     currentTheme = "dark";
   }
 
   switch (currentTheme) {
     case "dark":
-      root.style.setProperty("--background-color", "rgb(236, 243, 252)");
-      root.style.setProperty("--text-color", "#000000");
-      root.style.setProperty("--data-item-background-color", "#f0f0f0");
-      root.style.setProperty("--data-item-text-color", "#000000");
+      // Switch to light theme
+      root.style.setProperty("--background-color", "rgb(238, 250, 250)");
+      root.style.setProperty("--text-color", "rgb(2, 13, 44)");
+      root.style.setProperty("--item-background-color", "rgb(252, 253, 255)");
+      root.style.setProperty("--item-border-color", "rgb(215, 223, 235)");
       root.style.setProperty("--is-light-showed", "block");
       root.style.setProperty("--is-dark-showed", "none");
       break;
 
     case "light":
+      // Switch to dark theme
       root.style.setProperty("--background-color", "rgb(9, 18, 56)");
-      root.style.setProperty("--text-color", "#ffffff");
-      root.style.setProperty("--data-item-background-color", "#333333");
-      root.style.setProperty("--data-item-text-color", "#ffffff");
+      root.style.setProperty("--text-color", "rgb(251, 254, 255)");
+      root.style.setProperty("--item-background-color", "rgb(32, 37, 54)");
+      root.style.setProperty("--item-border-color", "rgb(68, 74, 91)");
       root.style.setProperty("--is-light-showed", "none");
       root.style.setProperty("--is-dark-showed", "block");
       break;
