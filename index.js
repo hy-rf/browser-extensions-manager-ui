@@ -125,17 +125,20 @@ document.getElementById("data-list").addEventListener("click", (e) => {
   if (e.target.id.startsWith("state")) {
     const id = parseInt(e.target.id.split(",")[1]);
     updateActiveState(id);
-    switch (sortState) {
-      case 0:
-        showAll();
-        break;
-      case 1:
-        showActive();
-        break;
-      case 2:
-        showInactive();
-        break;
-    }
+    setTimeout(() => {
+      switch (sortState) {
+        case 0:
+          showAll();
+          break;
+        case 1:
+          showActive();
+          break;
+        case 2:
+          showInactive();
+          break;
+      }
+    }, 500);
+
     return;
   }
 });
