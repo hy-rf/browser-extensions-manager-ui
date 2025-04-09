@@ -239,12 +239,13 @@ input:checked + .slider:before {
     max-width: 1440px;
   }
   #data-list {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
   }
   .data-item {
-    position: relative;
-    width: 32.33%;
+    width: 100%;
   }
   #toolbar {
     flex-direction: row;
